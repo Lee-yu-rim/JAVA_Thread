@@ -7,7 +7,7 @@ public class Count extends Thread{
 		for(int i=10;i>0;i--) {
 			System.out.println(i);
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1000);  //1초에 한번씩 i의 값이 줄어든다.
 			}catch(Exception e) {
 				e.printStackTrace();
 			}

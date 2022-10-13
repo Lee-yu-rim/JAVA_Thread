@@ -24,8 +24,8 @@ public class ThreadTest {
 //		cnt.start();  //Count클래스 안에 run메소드가 아닌 start메소드로 호출하여 독립되게 동작이 실행된다.
 		
 		//Runnable 인터페이스 상속 방식
-//		Runnable r = new Count2();
-//		Thread cnt2 = new Thread(r);
+//		Runnable r = new Count2(); 
+//		Thread cnt2 = new Thread(r);  
 //		cnt2.start();
 		
 		//메인쓰레드
@@ -43,7 +43,7 @@ public class ThreadTest {
 		//실행구문안에 메모리와 CPU 등 다른 다양한 시스템들이 처리되기 때문에 번갈아가면서 출력되긴하지만 균등하게 출력되지는 않는다.
 		
 		Runnable r = new Thread6();
-		Thread th1 = new Thread(r,"*");
+		Thread th1 = new Thread(r,"*");  //r : 인터페이스 객체, * : 스레드의 이름 
 		Thread th2 = new Thread(r,"**");
 		Thread th3 = new Thread(r,"***");
 		
@@ -55,13 +55,13 @@ public class ThreadTest {
 		//쓰레드 제어
 		try {
 			Thread.sleep(2000);  //현재 자신을 호출한 쓰레드를 sleep한다.(일시정지)
-			th1.suspend();   //쓰레드 일시정지 -> th1,2,3이 한번 실행된 뒤, 2초 뒤에 th1이 멈추고 대기 상태로 들어감, th2,3만 그뒤로 실행됨
+			th1.suspend();   //쓰레드 일시정지 -> th1,2,3이 2번(2초)실행된 뒤에 th1이 멈추고 대기 상태로 들어감, th2,3만 그뒤로 실행됨
 			Thread.sleep(2000);
-			th2.suspend();   //th2는 4초 뒤에 멈춤
+			th2.suspend();   //th2는 4초 뒤에 멈춤, th3만 실행
 			Thread.sleep(3000);  //main쓰레드가 7초뒤에 실행됨
-			th1.resume();   //suspend 되어있는 쓰레드를 실행 대기상태로 만듬 => 즉시 실행은 아님
+			th1.resume();   //suspend 되어있는 쓰레드를 실행 대기상태로 만듬 => 7초 뒤 th1과 th3실행
 			Thread.sleep(3000);
-			th2.resume();  
+			th2.resume();  //10초 뒤 th1,2,3 실행
 			Thread.sleep(3000);
 			th1.stop();  //끝날때도 순서대로 찍히진 않음
 			th2.stop();
