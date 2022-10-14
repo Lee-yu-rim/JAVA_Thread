@@ -8,11 +8,11 @@ public class Table {
 	
 	//접시에 음식 세팅하는 메소드
 	public synchronized void add(String dish) {
-		while(dishes.size() >= MAX_FOOD) {  //음식을 담을 접시가 ㅇ벗다
+		while(dishes.size() >= MAX_FOOD) {  //음식을 담을 접시가 없다.
 			String name = Thread.currentThread().getName();
 			System.out.println(name + " is waiting");
 			
-			try {    //고객이 음식이 없을 때 요리사가 잠시 대기하는 상태(요리사 쓰레드 중단)
+			try {   
 				wait();  //wait메소드는 synchronized 해줘야한다.    
 			}catch(InterruptedException e) {  
 				e.printStackTrace();

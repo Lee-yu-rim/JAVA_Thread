@@ -5,9 +5,20 @@ public class ThreadTest {
 	public static void main(String[] args) {
 		//프로그램 -> 프로세스(프로그램 실행) -> 멀티쓰레드(하나의 프로세스 안에 여러 기능이 사용되는 것)
 		//모든 프로그램은 기본적으로 쓰레드가 동작한다.(1개 이상의 쓰레드가 있다)
+		
 		//쓰레드 만드는 방법
-		//-Thread 클래스를 상속
-		//-Runnable 인터페이스 상속
+		//1. Thread 클래스 상속
+		//- 클래스를 직접 생성
+		//2. Runnable 인터페이스 상속
+		//- 다중 상속을 하는 경우 사용
+		//- 2번의 생성과정을 거침
+		//- 클래스 생성 후 Thread 클래스의 생성자를 사용하여 다시 한 번 생성한다.
+		
+		//쓰레드의 제어
+		//Thread.sleep(1000) : 쓰레드의 일시 정지
+		//wait() : 쓰레드의 일시 정지
+		//notify() : 쓰레드를 실행 대기
+		
 		
 		//원쓰레드 방식 -> 한가지 실행문이 동작한 뒤, 다음 실행문을 동작하는 것(동시에 쓰레드가 동작하지 않음)
 //		for(int i=0;i<10;i++) {
@@ -19,11 +30,11 @@ public class ThreadTest {
 //		}
 		
 		//멀티쓰레드
-		//Thread 클래스 상속 방식
+		//1. Thread 클래스 상속 방식 
 //		Count cnt = new Count();
 //		cnt.start();  //Count클래스 안에 run메소드가 아닌 start메소드로 호출하여 독립되게 동작이 실행된다.
 		
-		//Runnable 인터페이스 상속 방식
+		//2. Runnable 인터페이스 상속 방식
 //		Runnable r = new Count2(); 
 //		Thread cnt2 = new Thread(r);  
 //		cnt2.start();
